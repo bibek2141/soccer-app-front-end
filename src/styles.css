@@ -1,0 +1,78 @@
+body {
+  background: #bdc3c7; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c3e50,
+    #bdc3c7
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c3e50,
+    #bdc3c7
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.loading {
+  position: absolute;
+  /* top: 0;
+  left: 0; */
+  height: 100%;
+  width: 100%;
+  top: 30%;
+  left: 35%;
+}
+
+.form {
+  background-color: white;
+  border-radius: 5px;
+  width: 550px;
+  margin: 20px auto;
+  padding: 20px;
+  /* height: 600px; */
+}
+
+.form-body {
+  text-align: left;
+  padding: 20px 10px;
+}
+
+.form-body > * {
+  padding: 5px;
+}
+
+.form__label {
+  width: 40%;
+}
+
+.form_input {
+  width: 60%;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.react-tel-input .form-control {
+  width: 100% !important;
+}
+
+.comments {
+  margin-bottom: 15px;
+}
+.commentsAuthor {
+  float: left;
+  margin-right: 10px;
+}
+.user {
+  float: left;
+  font-weight: bold;
+  color: #009;
+  margin-bottom: 5px;
+}
+.commentsContent {
+  margin-left: 30px;
+  font-style: italic;
+}

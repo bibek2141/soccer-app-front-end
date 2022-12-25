@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import AppRoutes from "./components/AppRoutes";
+import React, { useState, useEffect } from "react";
+import logo from "./assets/loading.gif";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3000);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      {loading === false ? (
+        <AppRoutes />
+      ) : (
+        <div
+          className="bg-white text-center loading container"
+          style={{ width: 400 }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <img src={logo} alt="loading..." />
+        </div>
+      )}
+    </>
   );
 }
 
