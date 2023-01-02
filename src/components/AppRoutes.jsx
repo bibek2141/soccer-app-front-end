@@ -1,82 +1,44 @@
 import React from "react";
-import Header from "./Header";
-import Registration from "./Registration";
-import Login from "./Login";
-import UserHeader from "./HeaderComponents/UserHeader";
-import AdminHeader from "./HeaderComponents/AdminHeader";
-import UserList from "./BodyComponents/UserList";
+import RegistrationBoard from "./MenuItems/RegistrationBoard";
+import LoginBoard from "./MenuItems/LoginBoard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "../Services/ProtectedRoutes";
-import UserHome from "./BodyComponents/UserHome";
-import UserPosts from "./BodyComponents/UserPosts";
-import AllUsersDiscussionsPosts from "./BodyComponents/AllUsersDiscussionsPosts";
+import DiscussionPost from "./MenuItems/DiscussionPost";
+import AdminDashBoard from "./MenuItems/AdminDashBoard";
+import UserDashBoard from "./MenuItems/UserDashBoard";
+import DiscussionsBoard from "./MenuItems/DiscussionsBoard";
 
-import DiscussionPost from "./BodyComponents/DiscussionPost";
-
-let role = localStorage.getItem("role");
+const role = localStorage.getItem("role");
 
 const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/register"
-          element={
-            <div>
-              <Header />
-              <Registration />
-            </div>
-          }
-        />
-        <Route
-          path="/"
-          exact
-          element={
-            <div>
-              <Header />
-              <Login />
-            </div>
-          }
-        />
+        <Route path="/register" element={<RegistrationBoard />} />
+        <Route path="/" exact element={<LoginBoard />} />
+
         <Route path="/" element={<ProtectedRoutes />}>
           <Route
             path="/userDashBoard"
             exact
-            element={
-              <div>
-                <UserHeader />
-                <UserHome />
-                <UserPosts />
-              </div>
-            }
+            element={<UserDashBoard role={role} />}
           />
           <Route
             path="/adminDashBoard"
             exact
-            element={
-              <div>
-                <AdminHeader />
-                <UserList />
-                <AllUsersDiscussionsPosts />
-              </div>
-            }
+            element={<AdminDashBoard role={role} />}
           />
           <Route
             path="/userDashBoard/Discussions"
             exact
-            element={
-              <div>
-                <UserHeader />
-                <AllUsersDiscussionsPosts />
-              </div>
-            }
+            element={<DiscussionsBoard />}
           />
+          <Route
+            exact
+            path="/userDashBoard/userDiscussions/:discussionID"
+            element=<DiscussionPost />
+          ></Route>
         </Route>
-        <Route
-          exact
-          path="/userDashBoard/userDiscussions/:discussionID"
-          element=<DiscussionPost />
-        ></Route>
       </Routes>
     </Router>
   );

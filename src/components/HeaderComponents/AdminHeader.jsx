@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Navbar from "react-bootstrap/Navbar";
+import { Navbar, Nav, Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const UserHeader = () => {
@@ -22,14 +20,19 @@ const UserHeader = () => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">Soccer Social Web App</Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end px-4">
-          <Navbar.Text>Signed in as: {username}</Navbar.Text>
+        <Navbar.Brand>Soccer Social Web App</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav" className="text-white">
+          <Nav className="me-auto">
+            <Nav.Link href="/adminDashboard">Home</Nav.Link>
+          </Nav>
+          <Nav>
+            <Navbar.Text className="px-4">Signed in as: {username}</Navbar.Text>
+            <Button variant="danger" size="sm" onClick={logout}>
+              Log Out
+            </Button>
+          </Nav>
         </Navbar.Collapse>
-        <Button variant="danger" size="sm" onClick={logout}>
-          Log Out
-        </Button>
       </Container>
     </Navbar>
   );

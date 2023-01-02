@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles.css";
+import "../../styles.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Navigate, Link } from "react-router-dom";

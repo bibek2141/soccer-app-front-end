@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import AdminHeader from "../HeaderComponents/AdminHeader";
 import UserHeader from "../HeaderComponents/UserHeader";
 import axios from "axios";
-import DiscussionPagePost from "./DiscussionPagePost";
-import PageComments from "./PageComments";
+import DiscussionPagePost from "../BodyComponents/DiscussionPagePost";
+import PageComments from "../BodyComponents/PageComments";
 
 const DiscussionPost = () => {
   const [data, setData] = useState([]);

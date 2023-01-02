@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles.css";
+import "../../styles.css";
 const Header = () => {
   return (
     <nav className="bg-dark navbar-dark navbar">
