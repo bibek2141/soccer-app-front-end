@@ -1,6 +1,7 @@
 import React from "react";
 import { Tab, Tabs } from "react-bootstrap";
 import DiscussionPostForm from "../PostForms/DiscussionPostForm";
+import MeetUpsPostForm from "../PostForms/MeetUpsPostForm";
 
 const UserHome = () => {
   return (
@@ -14,7 +15,7 @@ const UserHome = () => {
           <DiscussionPostForm />
         </Tab>
         <Tab eventKey={2} title="Meet Ups" className="bg-white">
-          Tab 2 content
+          <MeetUpsPostForm />
         </Tab>
         <Tab eventKey={3} title="Memes" className="bg-white">
           Tab 3 content

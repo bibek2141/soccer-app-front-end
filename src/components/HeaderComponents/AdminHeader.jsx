@@ -25,6 +25,7 @@ const UserHeader = () => {
         <Navbar.Collapse id="responsive-navbar-nav" className="text-white">
           <Nav className="me-auto">
             <Nav.Link href="/adminDashboard">Home</Nav.Link>
+            <Nav.Link href="/userDashboard/Discussions">Discussions</Nav.Link>
           </Nav>
           <Nav>
             <Navbar.Text className="px-4">Signed in as: {username}</Navbar.Text>

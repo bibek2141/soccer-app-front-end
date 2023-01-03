@@ -31,7 +31,7 @@ const AppRoutes = () => {
           <Route
             path="/userDashBoard/Discussions"
             exact
-            element={<DiscussionsBoard />}
+            element={<DiscussionsBoard role={role} />}
           />
           <Route
             exact
