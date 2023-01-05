@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import axios from "axios";
 
 const MeetUpsPostForm = () => {
@@ -9,15 +12,22 @@ const MeetUpsPostForm = () => {
   const [error, setError] = useState(false);
   const [required, setRequired] = useState(false);
 
+  const [startDate, setStartDate] = useState(new Date());
+  const filterTime = (date) => {
+    const isPastTime = new Date().getTime() > date.getTime();
+    return !isPastTime;
+  };
+
   const handlePost = (e) => {
     e.preventDefault();
     var id = JSON.parse(localStorage.getItem("id"));
-    const url = `http://localhost:12840/api/Meetup/CreateMeetupPosts`;
-    console.log(title, location, id);
+    const url = `http://localhost:12840/api/Meetup/CreateMeetUpPosts`;
+    console.log(title, location, id, startDate);
     const data = {
       Title: title,
       Location: location,
       AddedBy: id,
+      MeetUpsDateTime: startDate,
     };
 
     if (!title || !location) {
@@ -92,6 +102,15 @@ const MeetUpsPostForm = () => {
             value={location}
             required
           ></input>
+        </div>
+        <div className="form-group">
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            showTimeSelect
+            filterTime={filterTime}
+            dateFormat="MM/dd/yyyy h:mm aa"
+          />
         </div>
       </div>
       <div className="footer">
