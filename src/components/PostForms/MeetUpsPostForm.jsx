@@ -11,8 +11,8 @@ const MeetUpsPostForm = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [required, setRequired] = useState(false);
-
   const [startDate, setStartDate] = useState(new Date());
+
   const filterTime = (date) => {
     const isPastTime = new Date().getTime() > date.getTime();
     return !isPastTime;
@@ -20,21 +20,19 @@ const MeetUpsPostForm = () => {
 
   const handlePost = (e) => {
     e.preventDefault();
-    var id = JSON.parse(localStorage.getItem("id"));
-    const url = `http://localhost:12840/api/Meetup/CreateMeetUpPosts`;
-    console.log(title, location, id, startDate);
+    const id = JSON.parse(localStorage.getItem("id"));
+    const url = `http://localhost:12840/api/MeetUp/CreateUserMeetUpPosts`;
     const data = {
       Title: title,
-      Location: location,
       AddedBy: id,
-      MeetUpsDateTime: startDate,
+      Location: location,
+      MeetUpsDateTime:
+        startDate.toLocaleDateString() + " " + startDate.toLocaleTimeString(),
     };
-
     if (!title || !location) {
       setRequired(true);
       return;
     }
-
     try {
       axios.post(url, data, {
         headers: {
@@ -93,7 +91,7 @@ const MeetUpsPostForm = () => {
             required
           />
         </div>
-        <div className="location form-group">
+        <div className="location form-group pb-4">
           <input
             className="form-control"
             id="location"
@@ -103,13 +101,14 @@ const MeetUpsPostForm = () => {
             required
           ></input>
         </div>
-        <div className="form-group">
+        <div className="form-group pb-4">
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             showTimeSelect
             filterTime={filterTime}
             dateFormat="MM/dd/yyyy h:mm aa"
+            style={{ borderColor: "red" }}
           />
         </div>
       </div>
