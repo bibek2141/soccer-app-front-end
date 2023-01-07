@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const UserPosts = () => {
   const [data, setData] = useState([]);
-
+  /*Dom updates with data */
   useEffect(() => {
     const getData = () => {
       const ID = JSON.parse(localStorage.getItem("id"));
@@ -28,6 +28,7 @@ const UserPosts = () => {
 
   return (
     <div>
+      {/*Check if the there is any discussion posts available for this user!*/}
       {data !== null ? (
         <div>
           <h1 className="text-center pt-3">Discussion Posts</h1>

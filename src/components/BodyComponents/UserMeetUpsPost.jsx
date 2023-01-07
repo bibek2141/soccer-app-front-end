@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 
 const UserMeetUpsPost = () => {
   const [data, setData] = useState([]);
-
+  /*Dom updates with data */
   useEffect(() => {
     const getData = () => {
       const ID = JSON.parse(localStorage.getItem("id"));
@@ -28,9 +28,10 @@ const UserMeetUpsPost = () => {
 
   return (
     <div>
+      {/*Check if the there is any meet up posts available for this user!*/}
       {data !== null ? (
         <div>
-          <h1 className="text-center pt-3">Discussion Posts</h1>
+          <h1 className="text-center pt-3">MeetUp Posts</h1>
           <div className="container pt-3">
             <ul>
               <Table
